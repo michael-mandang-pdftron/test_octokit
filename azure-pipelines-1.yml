@@ -12,4 +12,11 @@ stages:
   - job: BuildJob
     steps:
     - script: echo Building!
+    - task: NuGetCommand@2
+      inputs:
+        command: 'restore'
+        restoreSolution: '**/*.sln'
+        feedsToUse: 'select'
+
+    
 
