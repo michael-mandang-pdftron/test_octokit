@@ -1,0 +1,15 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+stages:
+- stage: Deploy
+  pool: 
+   name: Default
+   demands:
+    - Agent.Name -equals JORDAN-PC
+  jobs:
+  - job: BuildJob
+    steps:
+    - script: echo Building!
+
