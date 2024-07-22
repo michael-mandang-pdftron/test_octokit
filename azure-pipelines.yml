@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: test-vm
+  vmImage: JORDAN-PC
 
 variables:
   buildConfiguration: 'Release'
