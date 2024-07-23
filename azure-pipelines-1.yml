@@ -17,12 +17,14 @@ stages:
         SourceFolder: 'C:\work\_test\other-test2'
         Contents: '**'
         TargetFolder: '.'
-      
     - task: NuGetCommand@2
       inputs:
         command: 'restore'
-        restoreSolution: '*.sln'
+        restoreSolution: '**/*.sln'
         feedsToUse: 'select'
+        vstsFeed: 'd30db029-00bc-4631-af4a-cd190b820194/0b5164d2-af62-4e71-9ccb-662cb13af499'
+        includeNuGetOrg: false
+
     - task: CmdLine@2
       inputs:
         script: |
@@ -31,11 +33,7 @@ stages:
           dotnet build
           cd bin\debug
           other-test.exe
-    - task: NuGetCommand@2
-      inputs:
-        command: 'pack'
-        packagesToPack: '**/*.csproj'
-        versioningScheme: 'off'
+
     
     
 
