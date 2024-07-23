@@ -22,6 +22,11 @@ stages:
         command: 'restore'
         restoreSolution: '*.sln'
         feedsToUse: 'select'
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'run'
+        workingDirectory: 'simple_app'
+    
 
     
 
