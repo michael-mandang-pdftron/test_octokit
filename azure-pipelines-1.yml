@@ -12,10 +12,15 @@ stages:
   - job: BuildJob
     steps:
     - script: echo Building!
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: 'C:\work\_test\simple_app2'
+        Contents: '**'
+        TargetFolder: '.'
     - task: NuGetCommand@2
       inputs:
         command: 'restore'
-        restoreSolution: '**/*.sln'
+        restoreSolution: '*.sln'
         feedsToUse: 'select'
 
     
