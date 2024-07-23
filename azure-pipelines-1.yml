@@ -23,7 +23,14 @@ stages:
         command: 'restore'
         restoreSolution: '*.sln'
         feedsToUse: 'select'
-        
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo hello
+          cd other-test\
+          dotnet build
+          cd bin\debug
+          other-test.exe
     - task: NuGetCommand@2
       inputs:
         command: 'pack'
