@@ -14,7 +14,7 @@ stages:
     - script: echo Building!
     - task: CopyFiles@2
       inputs:
-        SourceFolder: 'C:\work\_test\simple_app2'
+        SourceFolder: 'C:\work\_test\other-test2'
         Contents: '**'
         TargetFolder: '.'
     - task: NuGetCommand@2
@@ -22,10 +22,15 @@ stages:
         command: 'restore'
         restoreSolution: '*.sln'
         feedsToUse: 'select'
-    - task: DotNetCoreCLI@2
+    - task: CmdLine@2
       inputs:
-        command: 'run'
-        workingDirectory: 'simple_app'
+        script: |
+          echo hello
+          cd other-test\
+          dotnet build
+          cd bin\debug
+          other-test.exe
+    
     
 
     
