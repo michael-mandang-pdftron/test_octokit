@@ -17,19 +17,18 @@ stages:
         SourceFolder: 'C:\work\_test\other-test2'
         Contents: '**'
         TargetFolder: '.'
+      
     - task: NuGetCommand@2
       inputs:
         command: 'restore'
         restoreSolution: '*.sln'
         feedsToUse: 'select'
-    - task: CmdLine@2
+        
+    - task: NuGetCommand@2
       inputs:
-        script: |
-          echo hello
-          cd other-test\
-          dotnet build
-          cd bin\debug
-          other-test.exe
+        command: 'pack'
+        packagesToPack: '**/*.csproj'
+        versioningScheme: 'off'
     
     
 
